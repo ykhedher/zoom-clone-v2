@@ -20,8 +20,7 @@ io.on('connection', socket => {
     socket.join(roomId)
     socket.to(roomId).broadcast.emit('user-connected', userId);
     // messages
-    socket.on('message', function (message) {
-      console.log(message);
+    socket.on('message', (message) => {
       //send message to the same room
       io.to(roomId).emit('createMessage', message)
   }); 
